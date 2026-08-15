@@ -1,0 +1,16 @@
+{
+  "name": "@liquid-glass/ui",
+  "version": "0.2.0",
+  "description": "Production-oriented Liquid Glass UI library with CSS-first progressive enhancement and optional shared WebGL optical rendering.",
+  "type": "module",
+  "main": "./dist/liquid-glass.js",
+  "module": "./dist/liquid-glass.js",
+  "style": "./dist/liquid-glass.css",
+  "exports": {
+    ".": "./dist/liquid-glass.js",
+    "./css": "./dist/liquid-glass.css",
+    "./webgl": "./dist/liquid-glass-webgl.js"
+  },
+  "files": ["dist","README.md","docs","skills","LICENSE"],
+  "sideEffects": false
+}
