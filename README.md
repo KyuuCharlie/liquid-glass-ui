@@ -89,4 +89,4 @@ See `worker/`.
 
 ## License
 
-MIT.
+GPL v3.
