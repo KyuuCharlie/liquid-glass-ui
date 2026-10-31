@@ -87,6 +87,23 @@ Cloudflare Edge
 
 See `worker/`.
 
+## Halloween CSS add-on
+
+A reusable, CSS-only seasonal accent is available at `styles/halloween.css`.
+It adds small fixed pumpkin/ghost decorations and optional glass-card styles.
+It does not require JavaScript, external images, fonts, or network requests beyond loading the stylesheet.
+
+Load it from jsDelivr:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/KyuuCharlie/liquid-glass-ui@main/styles/halloween.css"
+>
+```
+
+The decorative accents appear automatically when the stylesheet is loaded. To use the optional card treatment, add `lg-halloween-card` to a component; use `lg-halloween-accent` for accent text. The decorations ignore pointer events and respect `prefers-reduced-motion`.
+
 ## License
 
 GPL v3.
