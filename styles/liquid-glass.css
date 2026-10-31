@@ -37,7 +37,7 @@
 .lg-glass::before {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
@@ -54,7 +54,7 @@
 .lg-glass::after {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(360px circle at var(--lg-pointer-x, 50%) var(--lg-pointer-y, 0%),
@@ -71,6 +71,7 @@
 }
 .lg-glass > * {
   position: relative;
+  z-index: 1;
 }
 .lg-glass-card {
   --lg-glass-radius: 1.1rem;
