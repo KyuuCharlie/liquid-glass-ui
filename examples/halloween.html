@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halloween Liquid Glass Easter Egg</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; margin: 0; display: grid; place-items: center;
+      overflow: hidden; color: #fff; font: 16px/1.5 system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 20% 15%, #633b78 0, transparent 38%),
+        radial-gradient(ellipse at 85% 80%, #9b4b20 0, transparent 35%),
+        linear-gradient(145deg, #090b18, #171326 55%, #090b18);
+    }
+    .card {
+      width: min( min(90vw, 440px), 440px); padding: 38px; text-align: center;
+      border: 1px solid rgba(255,255,255,.22); border-radius: 28px;
+      background: rgba(255,255,255,.09); backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.18);
+    }
+    .icon { font-size: 56px; filter: drop-shadow(0 8px 18px #ff8a3655); }
+    h1 { margin: 12px 0 8px; font-size: clamp(25px, 6vw, 34px); }
+    p { color: #d7d0e5; margin: 0 0 24px; }
+    button {
+      border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+      padding: 12px 22px; color: white; font: inherit; cursor: pointer;
+      background: linear-gradient(135deg, rgba(255,145,65,.85), rgba(151,75,190,.8));
+      box-shadow: 0 8px 28px #0005; transition: transform .2s, filter .2s;
+    }
+    button:hover { transform: translateY(-2px); filter: brightness(1.12); }
+    button:focus-visible { outline: 3px solid #ffd28a; outline-offset: 4px; }
+    .float {
+      position: fixed; left: var(--x); bottom: -48px; font-size: var(--size);
+      pointer-events: none; animation: rise var(--duration) ease-out forwards;
+    }
+    @keyframes rise {
+      to { transform: translateY(-110vh) rotate(24deg); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="icon" aria-hidden="true">🎃</div>
+    <h1>A Little Halloween Magic</h1>
+    <p>A tiny seasonal easter egg, wrapped in liquid glass.</p>
+    <button id="summon" type="button">Summon a ghost 👻</button>
+  </main>
+  <script>
+    const button = document.querySelector("#summon");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    button.addEventListener("click", () => {
+      const ghost = document.createElement("span");
+      ghost.className = "float";
+      ghost.textContent = ["👻", "✨", "🦇", "🎃"][Math.floor(Math.random() * 4)];
+      ghost.setAttribute("aria-hidden", "true");
+      ghost.style.setProperty("--x", Math.random() * 92 + "vw");
+      ghost.style.setProperty("--size", 20 + Math.random() * 24 + "px");
+      ghost.style.setProperty("--duration", reducedMotion.matches ? ".01s" : 3 + Math.random() * 2 + "s");
+      document.body.append(ghost);
+      ghost.addEventListener("animationend", () => ghost.remove(), { once: true });
+      if (reducedMotion.matches) ghost.remove();
+    });
+  </script>
+</body>
+</html>
