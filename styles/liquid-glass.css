@@ -1,0 +1,97 @@
+/*
+ * Liquid Glass UI — CSS material layer
+ * Progressive enhancement: translucent material with a readable solid fallback.
+ */
+:root {
+  --lg-glass-tint: 255 255 255;
+  --lg-glass-edge: 255 255 255;
+  --lg-glass-shadow: 15 23 42;
+  --lg-glass-blur: 22px;
+  --lg-glass-radius: 1.1rem;
+}
+.dark {
+  --lg-glass-tint: 28 34 48;
+  --lg-glass-edge: 255 255 255;
+  --lg-glass-shadow: 0 0 0;
+}
+.lg-glass {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgb(var(--lg-glass-edge) / 0.2);
+  border-radius: var(--lg-glass-radius);
+  background:
+    radial-gradient(120% 90% at var(--lg-pointer-x, 50%) var(--lg-pointer-y, 0%),
+      rgb(255 255 255 / 0.18), transparent 55%),
+    linear-gradient(145deg,
+      rgb(var(--lg-glass-tint) / 0.76),
+      rgb(var(--lg-glass-tint) / 0.42));
+  box-shadow:
+    0 16px 42px rgb(var(--lg-glass-shadow) / 0.10),
+    inset 0 1px 0 rgb(255 255 255 / 0.32),
+    inset 0 -1px 0 rgb(255 255 255 / 0.06);
+  -webkit-backdrop-filter: blur(var(--lg-glass-blur)) saturate(165%);
+  backdrop-filter: blur(var(--lg-glass-blur)) saturate(165%);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.lg-glass::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgb(255 255 255 / 0.48),
+    rgb(255 255 255 / 0.04) 38%,
+    rgb(255 255 255 / 0.16) 72%,
+    rgb(255 255 255 / 0.34));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.lg-glass::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(360px circle at var(--lg-pointer-x, 50%) var(--lg-pointer-y, 0%),
+    rgb(255 255 255 / 0.13), transparent 72%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.lg-glass:hover {
+  border-color: rgb(var(--lg-glass-edge) / 0.34);
+  box-shadow:
+    0 20px 52px rgb(var(--lg-glass-shadow) / 0.14),
+    inset 0 1px 0 rgb(255 255 255 / 0.38),
+    inset 0 -1px 0 rgb(255 255 255 / 0.08);
+}
+.lg-glass > * {
+  position: relative;
+}
+.lg-glass-card {
+  --lg-glass-radius: 1.1rem;
+}
+.lg-glass-nav {
+  --lg-glass-radius: 0;
+  background:
+    linear-gradient(180deg, rgb(var(--lg-glass-tint) / 0.78), rgb(var(--lg-glass-tint) / 0.58));
+  -webkit-backdrop-filter: blur(26px) saturate(175%);
+  backdrop-filter: blur(26px) saturate(175%);
+}
+.lg-glass-dialog {
+  --lg-glass-radius: 1.25rem;
+  background:
+    linear-gradient(145deg, rgb(var(--lg-glass-tint) / 0.88), rgb(var(--lg-glass-tint) / 0.72));
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .lg-glass {
+    background: rgb(var(--lg-glass-tint) / 0.94);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-glass { transition: none; }
+}
