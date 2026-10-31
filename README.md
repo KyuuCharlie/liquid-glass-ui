@@ -102,7 +102,7 @@ Load it from jsDelivr:
 >
 ```
 
-The decorative accents appear automatically when the stylesheet is loaded. To use the optional card treatment, add `lg-halloween-card` to a component; use `lg-halloween-accent` for accent text. The decorations ignore pointer events and respect `prefers-reduced-motion`.
+Add `lg-halloween` to the `<body>` element to enable the fixed pumpkin/ghost accents. To use the optional card treatment, add `lg-halloween-card` to a component; use `lg-halloween-accent` for accent text. The decorations ignore pointer events and respect `prefers-reduced-motion`.
 
 ## License
 
