@@ -90,3 +90,7 @@ See `worker/`.
 ## License
 
 GPL v3.
+
+## Halloween glass demo 🎃
+
+Open [examples/halloween.html](examples/halloween.html) for a tiny interactive liquid-glass Halloween surprise.
