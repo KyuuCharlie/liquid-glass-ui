@@ -1,0 +1,88 @@
+/*
+ * Halloween CSS add-on for Liquid Glass UI
+ * Import this file on a site to enable a lightweight, CSS-only seasonal accent.
+ * No JavaScript, fonts, images, or external requests are required.
+ */
+
+:root {
+  --lg-halloween-pumpkin: #ff8a24;
+  --lg-halloween-violet: #a78bfa;
+}
+
+/* Fixed decorative accents; they never intercept clicks or cover page content. */
+body::before,
+body::after {
+  position: fixed;
+  z-index: 2147483000;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 18%));
+}
+
+body::before {
+  content: "🎃";
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  font-size: clamp(26px, 4vw, 42px);
+  animation: lg-halloween-float 4.8s ease-in-out infinite;
+}
+
+body::after {
+  content: "👻";
+  top: max(18px, env(safe-area-inset-top));
+  right: max(18px, env(safe-area-inset-right));
+  font-size: clamp(22px, 3vw, 34px);
+  opacity: 0.82;
+  animation: lg-halloween-drift 7s ease-in-out infinite;
+}
+
+/* Optional component styles for pages that opt in with these classes. */
+.lg-halloween-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgb(255 160 75 / 34%);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(167 139 250 / 16%), transparent 48%),
+    linear-gradient(145deg, rgb(255 138 36 / 10%), transparent 58%),
+    var(--lg-glass-surface, rgb(20 20 28 / 72%));
+  box-shadow:
+    0 12px 40px rgb(0 0 0 / 16%),
+    inset 0 1px 0 rgb(255 255 255 / 16%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.lg-halloween-card::after {
+  content: "✦";
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  color: var(--lg-halloween-pumpkin);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.lg-halloween-accent {
+  color: var(--lg-halloween-pumpkin);
+  text-shadow: 0 0 18px rgb(255 138 36 / 28%);
+}
+
+@keyframes lg-halloween-float {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-7px) rotate(5deg); }
+}
+
+@keyframes lg-halloween-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
+  50% { transform: translate3d(-5px, 7px, 0) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
+}
