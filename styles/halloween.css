@@ -10,8 +10,8 @@
 }
 
 /* Fixed decorative accents; they never intercept clicks or cover page content. */
-body::before,
-body::after {
+body.lg-halloween::before,
+body.lg-halloween::after {
   position: fixed;
   z-index: 2147483000;
   pointer-events: none;
@@ -20,7 +20,7 @@ body::after {
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 18%));
 }
 
-body::before {
+body.lg-halloween::before {
   content: "🎃";
   right: max(18px, env(safe-area-inset-right));
   bottom: max(18px, env(safe-area-inset-bottom));
@@ -28,7 +28,7 @@ body::before {
   animation: lg-halloween-float 4.8s ease-in-out infinite;
 }
 
-body::after {
+body.lg-halloween::after {
   content: "👻";
   top: max(18px, env(safe-area-inset-top));
   right: max(18px, env(safe-area-inset-right));
@@ -81,8 +81,8 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::before,
-  body::after {
+  body.lg-halloween::before,
+  body.lg-halloween::after {
     animation: none;
   }
 }
